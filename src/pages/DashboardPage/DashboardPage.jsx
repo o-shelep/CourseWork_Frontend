@@ -4,6 +4,8 @@ import TaskCard from "../../components/TaskCard/TaskCard";
 import UserStats from "../../components/UserStats/UserStats";
 import BannerImg from "../../assets/Banner.svg";
 import { useTasks } from "../../hooks/useTasks";
+import { formatSubject } from "../../utils/textUtil";
+import { truncateDescription } from "../../utils/textUtil";
 import "./DashboardPage.css";
 
 function DashboardPage() {
@@ -20,7 +22,10 @@ function DashboardPage() {
         {error && <p className="error-message">{error}</p>}
         {tasks.map((task) => (
           <div key={task.id} className="task-card-container">
-            <TaskCard title={task.title} description={task.description} />
+            <TaskCard
+              title={formatSubject(task.title)}
+              description={truncateDescription(task.description)}
+            />
           </div>
         ))}
       </div>
