@@ -6,17 +6,17 @@ const TaskDetail = () => {
     <div className="task-detail-container">
       <div className="task-header">
         <div className="subject">
-          <div className="subject-icon">OOP</div>
-          <h2 className="subject-title">Object Oriented Programming</h2>
+          <div className="subject-icon">ООП</div>
+          <h2 className="subject-title">Об'єктно орієнтоване програмування</h2>
         </div>
         <div className="teacher">
-          <span>Teacher</span>
-          <strong>Andriy Legeza</strong>
+          <span>Викладач</span>
+          <strong>Андрій Легеза</strong>
         </div>
       </div>
 
       <div className="task-description">
-        <h3>Task Description</h3>
+        <h3>Опис Місії</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -27,16 +27,14 @@ const TaskDetail = () => {
 
       <div className="task-info">
         <div>
-          <span className="label">Type Of Submission</span>
-          <p className="info-value">Text</p>
-        </div>
-        <div>
-          <span className="label">Maximum Number Of Points You'll Get</span>
+          <span className="label">
+            Максимальна кількість балів, яку може отримати студент
+          </span>
           <p className="info-value">20.00</p>
         </div>
         <div>
-          <span className="label">Possible Achievements</span>
-          <button className="achievement">First Submission</button>
+          <span className="label">Можливі Досягнення</span>
+          <button className="achievement">Перша Місія</button>
         </div>
       </div>
 
@@ -46,7 +44,7 @@ const TaskDetail = () => {
 
       <div className="task-footer">
         <div className="deadline">
-          <span>Deadline</span>
+          <span>Здати до</span>
           <p>23.04.2024, 12.00 a.m.</p>
         </div>
         <button className="submit-btn">Здати роботу</button>

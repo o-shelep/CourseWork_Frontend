@@ -25,27 +25,27 @@ const LoginForm = () => {
       <div className="content-container">
         <div className="form-container">
           <div className="heading-container">
-            <h3 className="heading">Get Started Now</h3>
+            <h3 className="heading">Розпочніть Вже Зараз</h3>
             <p className="subheading">
-              Enter your credentials to access your account
+              Введіть ваші дані, щоб отримати доступ до акаунту
             </p>
           </div>
 
           <form className="register-form" onSubmit={handleSubmit}>
             <div className="register-input">
-              <label htmlFor="email">Email address</label>
+              <label htmlFor="email">Електронна адреса</label>
               <input
                 type="text"
                 name="email"
                 id="email"
-                placeholder="john_doe3415@domain.com"
+                placeholder="shelep.olya@domain.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="register-input">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Пароль</label>
               <input
                 type="password"
                 name="password"
@@ -60,7 +60,7 @@ const LoginForm = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             <div className="forgot-password-container">
-              <p>Don't have an account?</p>
+              <p>Не маєте акаунту?</p>
             </div>
             <button className="register-btn" disabled={loading}>
               {loading ? "Logging in..." : "Log in"}

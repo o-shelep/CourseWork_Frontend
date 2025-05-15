@@ -3,30 +3,26 @@ import "./CreateNewForm.css";
 function CreateNewForm() {
   return (
     <div className="create-new-container">
-      <h2>Create a new task</h2>
+      <h2>Створіть нову місію</h2>
       <form className="form">
         <label>
-          Subject
-          <input type="text" placeholder="OOP" />
+          Предмет
+          <input type="text" placeholder="ООП" />
         </label>
         <label>
-          Maximum number of points student a can get
-          <input type="text" placeholder="OOP" />
+          Максимальна кількість балів, яку може отримати студент
+          <input type="text" placeholder="20.00" />
         </label>
         <label>
-          Type of submission
-          <input type="text" placeholder="Text" />
-        </label>
-        <label>
-          Deadline
+          Здати до:
           <input type="text" placeholder="23.04.2024, 12.00 a. m." />
         </label>
         <label>
-          Task Description
-          <textarea placeholder="Describe your task here..." />
+          Опис Місії
+          <textarea placeholder="Опишіть місію тут..." />
         </label>
         <button type="submit" className="create-new-btn">
-          Create
+          Створити
         </button>
       </form>
     </div>

@@ -27,39 +27,39 @@ const SignupForm = () => {
       <div className="content-container">
         <div className="form-container">
           <div className="heading-container">
-            <h3 className="heading">Get Started Now</h3>
+            <h3 className="heading">Розпочніть Вже Зараз</h3>
             <p className="subheading">
-              Enter your credentials to create your account
+              Введіть ваші дані, щоб отримати доступ до акаунту
             </p>
           </div>
 
           <form className="register-form" onSubmit={handleSubmit}>
             <div className="register-input">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Ім'я</label>
               <input
                 type="text"
                 name="name"
                 id="name"
-                placeholder="John Doe"
+                placeholder="Ольга Шелеп"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="register-input">
-              <label htmlFor="email">Email address</label>
+              <label htmlFor="email">Електронна адреса</label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="john_doe3415@domain.com"
+                placeholder="shelep.olya@domain.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="register-input">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Пароль</label>
               <input
                 type="password"
                 name="password"

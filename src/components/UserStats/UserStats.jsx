@@ -7,27 +7,27 @@ const UserStats = () => {
   const token = localStorage.getItem("token");
   const { user, loading, error } = useUserProfile(token);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!user) return <p>No user data found.</p>;
+  if (loading) return <p>Завантаження...</p>;
+  if (error) return <p>Помилка: {error}</p>;
+  if (!user) return <p>Користувача не знайдено.</p>;
 
   return (
     <div className="user-info-container">
       <div className="user-info-scrollable">
-        <h2 className="statistic-title">Statistic</h2>
+        <h2 className="statistic-title">Статистика</h2>
 
         <div className="achievement-circle">
           <span className="achievement-number">{user.level}</span>
         </div>
         <div className="heading-container">
-          <h3 className="user-greeting">Hello, {user.name}</h3>
-          <p className="achievement-text">Continue gaining achievements!</p>
+          <h3 className="user-greeting">Привіт, {user.name}</h3>
+          <p className="achievement-text">Продовжуйте відкривати досягнення!</p>
         </div>
 
         <div className="divider"></div>
 
         <div className="achievements-section">
-          <h4 className="section-title">Current Achievements</h4>
+          <h4 className="section-title">Відкриті досягнення</h4>
           <div className="achievements">
             {user.achievements.length > 0 ? (
               user.achievements.map((ach, idx) => (
@@ -36,34 +36,34 @@ const UserStats = () => {
                 </button>
               ))
             ) : (
-              <p>No achievements yet</p>
+              <p>Поки немає досягнень</p>
             )}
           </div>
         </div>
 
         <div className="info-section">
           <p>
-            <strong>Your Points</strong>{" "}
+            <strong>Твої Бали</strong>{" "}
             <span className="points">{user.points}</span>
           </p>
           <p>
-            <strong>Role</strong> <span className="role">{user.roles[0]}</span>
+            <strong>Роль</strong> <span className="role">{user.roles[0]}</span>
           </p>
         </div>
       </div>
 
       <div className="buttons-section">
         <button className="info-button">
-          Log out <img src={arrowIcon} alt="Arrow" />
+          Дізнатись більше <img src={arrowIcon} alt="Arrow" />
         </button>
         <button className="info-button">
-          Know more <img src={arrowIcon} alt="Arrow" />
+          Допомога <img src={arrowIcon} alt="Arrow" />
         </button>
         <button className="info-button">
-          Help <img src={arrowIcon} alt="Arrow" />
+          Змінити роль <img src={arrowIcon} alt="Arrow" />
         </button>
         <button className="info-button">
-          Change role <img src={arrowIcon} alt="Arrow" />
+          Вийти з системи <img src={arrowIcon} alt="Arrow" />
         </button>
       </div>
     </div>

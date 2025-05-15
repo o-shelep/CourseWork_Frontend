@@ -24,7 +24,7 @@ const Sidebar = () => {
           <span className="icon">
             <img src={DashboardIcon} alt="Dashboard" />
           </span>
-          <span>Dashboard</span>
+          <span>Дашборд</span>
         </Link>
 
         <Link
@@ -36,7 +36,7 @@ const Sidebar = () => {
           <span className="icon">
             <img src={TasksIcon} alt="My Assignments" />
           </span>
-          <span>My Assignments</span>
+          <span>Мої місії</span>
         </Link>
 
         <Link
@@ -48,13 +48,13 @@ const Sidebar = () => {
           <span className="icon">
             <img src={AddIcon} alt="Add" />
           </span>
-          <span>Create New</span>
+          <span>Створити</span>
         </Link>
       </nav>
 
       <footer className="footer">
-        &copy; All Rights Reserved <span className="footer-span">|</span> Shelep
-        Olha
+        &copy; Усі права захищені <span className="footer-span">|</span> Шелеп
+        Ольга
       </footer>
     </div>
   );

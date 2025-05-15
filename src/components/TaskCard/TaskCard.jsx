@@ -1,14 +1,17 @@
+import React from "react";
 import "./TaskCard.css";
 
-const TaskCard = () => {
+const TaskCard = ({ title, description, points, deadline, createdByName }) => {
   return (
     <div className="task-card">
-      <div className="task-icon">OOP</div>
+      <div className="task-icon">{title}</div>
 
       <div className="task-content">
-        <p className="task-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua...
+        <p className="task-text">{description}</p>
+        <p className="task-meta">
+          <strong>Балів:</strong> {points} | <strong>Дедлайн:</strong>{" "}
+          {new Date(deadline).toLocaleString()} | <strong>Викладач:</strong>{" "}
+          {createdByName}
         </p>
       </div>
 
