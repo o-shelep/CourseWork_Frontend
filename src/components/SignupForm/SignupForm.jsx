@@ -1,9 +1,27 @@
-import React from "react";
-// import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
 import "../LoginForm/LoginForm.css";
 import backgroundImage from "../../assets/Registration_Banner.png";
 
 const SignupForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { signup, loading, error } = useSignup();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = await signup(name, email, password);
+
+    if (data) {
+      localStorage.setItem("token", data.token);
+
+      window.location.href = "/dashboard";
+    }
+  };
+
   return (
     <div className="register-container">
       <div className="content-container">
@@ -11,39 +29,33 @@ const SignupForm = () => {
           <div className="heading-container">
             <h3 className="heading">Get Started Now</h3>
             <p className="subheading">
-              Enter your credentials to access your account
+              Enter your credentials to create your account
             </p>
           </div>
 
-          <form className="register-form">
+          <form className="register-form" onSubmit={handleSubmit}>
             <div className="register-input">
-              <label htmlFor="email">Name</label>
+              <label htmlFor="name">Name</label>
               <input
                 type="text"
-                name="email"
-                id="email"
+                name="name"
+                id="name"
                 placeholder="John Doe"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="register-input">
               <label htmlFor="email">Email address</label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 id="email"
                 placeholder="john_doe3415@domain.com"
                 required
-              />
-            </div>
-            <div className="register-input">
-              <label htmlFor="email">Role</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="e. g.  STUDENT"
-                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="register-input">
@@ -54,13 +66,16 @@ const SignupForm = () => {
                 id="password"
                 placeholder="minimum 8 characters"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="forgot-password-container">
-              <p>Already have an account?</p>
-              {/* <Link to="/login">Sign up</Link> */}
-            </div>
-            <button className="register-btn">Sign up</button>
+
+            {error && <p style={{ color: "red" }}>{error}</p>}
+
+            <button className="register-btn" type="submit" disabled={loading}>
+              {loading ? "Signing up..." : "Sign up"}
+            </button>
           </form>
         </div>
 
