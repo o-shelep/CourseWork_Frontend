@@ -8,11 +8,6 @@ const TaskCard = ({ title, description, points, deadline, createdByName }) => {
 
       <div className="task-content">
         <p className="task-text">{description}</p>
-        <p className="task-meta">
-          <strong>Балів:</strong> {points} | <strong>Дедлайн:</strong>{" "}
-          {new Date(deadline).toLocaleString()} | <strong>Викладач:</strong>{" "}
-          {createdByName}
-        </p>
       </div>
 
       <div className="task-actions">

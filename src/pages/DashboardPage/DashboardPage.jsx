@@ -3,13 +3,12 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import UserStats from "../../components/UserStats/UserStats";
 import BannerImg from "../../assets/Banner.svg";
+import { useTasks } from "../../hooks/useTasks";
 import "./DashboardPage.css";
-const mockTasks = [
-  { id: 1, title: "Task 1", description: "Do the first task" },
-  { id: 2, title: "Task 2", description: "Another task to handle" },
-  { id: 3, title: "Task 3", description: "Complete this one too" },
-];
+
 function DashboardPage() {
+  const { tasks, error } = useTasks();
+
   return (
     <div className="dashboard-container">
       <div className="sidebar-container">
@@ -18,7 +17,8 @@ function DashboardPage() {
 
       <div className="dashboard-container-content">
         <img src={BannerImg} alt="St. Mission Banner" />
-        {mockTasks.map((task) => (
+        {error && <p className="error-message">{error}</p>}
+        {tasks.map((task) => (
           <div key={task.id} className="task-card-container">
             <TaskCard title={task.title} description={task.description} />
           </div>
