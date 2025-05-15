@@ -4,7 +4,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import "./App.css";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import CreateNewPage from "./pages/CreateNewPage/CreateNewPage";
 function App() {

@@ -1,0 +1,17 @@
+.create-new-page-container {
+  display: flex;
+  height: 100vh;
+}
+
+.create-new-page-content-container {
+  flex: 1;
+  padding: 20px 32px 20px 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.create-new-page-content-container img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 16px;
+}

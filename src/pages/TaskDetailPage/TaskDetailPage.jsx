@@ -2,25 +2,13 @@ import React from "react";
 import TaskDetail from "../../components/TaskDetail/TaskDetail";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import BannerImg from "../../assets/Banner.svg";
-
+import "./TaskDetailPahe.css";
 function TaskDetailPage() {
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div className="task-detail-page-container">
       <Sidebar />
-      <div
-        style={{
-          flex: 1,
-          padding: "20px 32px 20px 16px",
-          boxSizing: "border-box",
-          overflowY: "auto",
-        }}
-      >
-        <img
-          src={BannerImg}
-          alt="Description"
-          style={{ width: "100%", objectFit: "cover", marginBottom: "16px" }}
-        />
-
+      <div className="task-detail-page-container-content">
+        <img src={BannerImg} alt="St. Mission Banner" />
         <TaskDetail />
       </div>
     </div>

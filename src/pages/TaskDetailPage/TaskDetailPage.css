@@ -1,0 +1,17 @@
+.task-detail-page-container {
+  display: flex;
+  height: 100vh;
+}
+
+.task-detail-page-container-content {
+  flex: 1;
+  padding: 20px 32px 20px 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.task-detail-page-container-content img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 16px;
+}

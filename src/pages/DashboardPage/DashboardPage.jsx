@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import UserStats from "../../components/UserStats/UserStats";
 import BannerImg from "../../assets/Banner.svg";
+import "./DashboardPage.css";
 const mockTasks = [
   { id: 1, title: "Task 1", description: "Do the first task" },
   { id: 2, title: "Task 2", description: "Another task to handle" },
@@ -10,25 +11,21 @@ const mockTasks = [
 ];
 function DashboardPage() {
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
-      <div style={{ flexShrink: 0 }}>
+    <div className="dashboard-container">
+      <div className="sidebar-container">
         <Sidebar />
       </div>
 
-      <div style={{ flex: 1, overflowY: "auto", padding: "20px 16px" }}>
-        <img
-          src={BannerImg}
-          alt="Description"
-          style={{ width: "100%", objectFit: "cover", marginBottom: "16px" }}
-        />
+      <div className="dashboard-container-content">
+        <img src={BannerImg} alt="St. Mission Banner" />
         {mockTasks.map((task) => (
-          <div key={task.id} style={{ marginBottom: "16px", width: "100%" }}>
+          <div key={task.id} className="task-card-container">
             <TaskCard title={task.title} description={task.description} />
           </div>
         ))}
       </div>
 
-      <div style={{ flexShrink: 0 }}>
+      <div className="sidebar-container">
         <UserStats />
       </div>
     </div>

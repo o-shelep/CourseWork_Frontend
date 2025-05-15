@@ -53,7 +53,8 @@ const Sidebar = () => {
       </nav>
 
       <footer className="footer">
-        All Rights Reserved <span className="footer-span">|</span> Shelep Olha
+        &copy; All Rights Reserved <span className="footer-span">|</span> Shelep
+        Olha
       </footer>
     </div>
   );
