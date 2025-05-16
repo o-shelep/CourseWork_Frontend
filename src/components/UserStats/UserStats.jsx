@@ -3,8 +3,29 @@ import arrowIcon from "../../assets/Arrow.svg";
 import "./UserStats.css";
 import { useUserProfile } from "../../hooks/useUserProfile";
 
+const ConfirmationModal = ({ message, onConfirm, onCancel }) => (
+  <div className="modal-overlay">
+    <div className="modal">
+      <p>{message}</p>
+      <div className="modal-buttons">
+        <button className="confirm-button" onClick={onConfirm}>
+          Так
+        </button>
+        <button className="cancel-button" onClick={onCancel}>
+          Скасувати
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 const UserStats = () => {
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [modalData, setModalData] = useState({
+    visible: false,
+    message: "",
+    onConfirm: null,
+  });
+
   const token = localStorage.getItem("token");
   const { user, loading, error } = useUserProfile(token);
 
@@ -15,6 +36,10 @@ const UserStats = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/login";
+  };
+
+  const openGitHub = () => {
+    window.location.href = "https://github.com/o-shelep/CourseWork_Frontend";
   };
 
   return (
@@ -59,40 +84,71 @@ const UserStats = () => {
       </div>
 
       <div className="buttons-section">
-        <button className="info-button">
+        <button
+          className="info-button"
+          onClick={() =>
+            setModalData({
+              visible: true,
+              message:
+                "Щоб дізнатись більше про нас, прочитайте README.md. Перейти до GitHub репозиторію?",
+              onConfirm: openGitHub,
+            })
+          }
+        >
           Дізнатись більше <img src={arrowIcon} alt="Arrow" />
         </button>
-        <button className="info-button">
+        <button
+          className="info-button"
+          onClick={() =>
+            setModalData({
+              visible: true,
+              message:
+                "Для допомоги скористайтесь README.md. Перейти до GitHub репозиторію?",
+              onConfirm: openGitHub,
+            })
+          }
+        >
           Допомога <img src={arrowIcon} alt="Arrow" />
         </button>
-        <button className="info-button">
+        <button
+          className="info-button"
+          onClick={() =>
+            setModalData({
+              visible: true,
+              message:
+                "Ця дія доступна лише адміністратору. Ви хочете зв'язатись з адміністратором?",
+              onConfirm: openGitHub,
+            })
+          }
+        >
           Змінити роль <img src={arrowIcon} alt="Arrow" />
         </button>
         <button
           className="info-button"
-          onClick={() => setShowLogoutModal(true)}
+          onClick={() =>
+            setModalData({
+              visible: true,
+              message: "Ви впевнені, що хочете вийти?",
+              onConfirm: handleLogout,
+            })
+          }
         >
           Вийти з системи <img src={arrowIcon} alt="Arrow" />
         </button>
-        {showLogoutModal && (
-          <div className="modal-overlay">
-            <div className="modal">
-              <p>Ви впевнені, що хочете вийти?</p>
-              <div className="modal-buttons">
-                <button className="confirm-button" onClick={handleLogout}>
-                  Так, вийти
-                </button>
-                <button
-                  className="cancel-button"
-                  onClick={() => setShowLogoutModal(false)}
-                >
-                  Скасувати
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+
+      {modalData.visible && (
+        <ConfirmationModal
+          message={modalData.message}
+          onConfirm={() => {
+            modalData.onConfirm();
+            setModalData({ visible: false, message: "", onConfirm: null });
+          }}
+          onCancel={() =>
+            setModalData({ visible: false, message: "", onConfirm: null })
+          }
+        />
+      )}
     </div>
   );
 };
