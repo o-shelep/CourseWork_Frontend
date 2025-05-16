@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import arrowIcon from "../../assets/Arrow.svg";
 import "./UserStats.css";
 import { useUserProfile } from "../../hooks/useUserProfile";
 
 const UserStats = () => {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const token = localStorage.getItem("token");
   const { user, loading, error } = useUserProfile(token);
 
   if (loading) return <p>Завантаження...</p>;
   if (error) return <p>Помилка: {error}</p>;
   if (!user) return <p>Користувача не знайдено.</p>;
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
 
   return (
     <div className="user-info-container">
@@ -62,9 +68,30 @@ const UserStats = () => {
         <button className="info-button">
           Змінити роль <img src={arrowIcon} alt="Arrow" />
         </button>
-        <button className="info-button">
+        <button
+          className="info-button"
+          onClick={() => setShowLogoutModal(true)}
+        >
           Вийти з системи <img src={arrowIcon} alt="Arrow" />
         </button>
+        {showLogoutModal && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <p>Ви впевнені, що хочете вийти?</p>
+              <div className="modal-buttons">
+                <button className="confirm-button" onClick={handleLogout}>
+                  Так, вийти
+                </button>
+                <button
+                  className="cancel-button"
+                  onClick={() => setShowLogoutModal(false)}
+                >
+                  Скасувати
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
