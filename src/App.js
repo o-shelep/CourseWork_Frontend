@@ -7,6 +7,7 @@ import {
 
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import CreateNewPage from "./pages/CreateNewPage/CreateNewPage";
+import MyAssignmentsPage from "./pages/MyAssignmentsPage/MyAssignmentsPage";
 import Login from "./components/LoginForm/LoginForm";
 import Register from "./components/SignupForm/SignupForm";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -31,11 +32,12 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/assignments"
           element={
             <ProtectedRoute>
-              <DashboardPage />
+              <MyAssignmentsPage />
             </ProtectedRoute>
           }
         />
