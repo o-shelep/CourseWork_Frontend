@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import TaskCard from "../../components/TaskCard/TaskCard";
 import BannerImg from "../../assets/Banner.svg";
-import { useTasks } from "../../hooks/useTasks";
+import { useTasks } from "../../hooks/useMyTasks";
 import { formatSubject } from "../../utils/textUtil";
 import { truncateDescription } from "../../utils/textUtil";
 import "./MyAssignmentsPage.css";
