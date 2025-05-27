@@ -23,6 +23,7 @@ function DashboardPage() {
         {tasks.map((task) => (
           <div key={task.id} className="task-card-container">
             <TaskCard
+              id={task.id}
               title={formatSubject(task.title)}
               description={truncateDescription(task.description)}
             />

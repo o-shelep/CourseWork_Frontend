@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import arrowIcon from "../../assets/Arrow.svg";
 import "./UserStats.css";
 import { useUserProfile } from "../../hooks/useUserProfile";
+import { getMainRole } from "../../utils/roleUtils";
 
 const ConfirmationModal = ({ message, onConfirm, onCancel }) => (
   <div className="modal-overlay">
@@ -78,7 +79,8 @@ const UserStats = () => {
             <span className="points">{user.points}</span>
           </p>
           <p>
-            <strong>Роль</strong> <span className="role">{user.roles[0]}</span>
+            <strong>Роль</strong>{" "}
+            <span className="role">{getMainRole(user.roles)}</span>
           </p>
         </div>
       </div>

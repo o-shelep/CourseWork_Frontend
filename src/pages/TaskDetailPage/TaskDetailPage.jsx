@@ -2,7 +2,7 @@ import React from "react";
 import TaskDetail from "../../components/TaskDetail/TaskDetail";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import BannerImg from "../../assets/Banner.svg";
-import "./TaskDetailPahe.css";
+import "./TaskDetailPage.css";
 function TaskDetailPage() {
   return (
     <div className="task-detail-page-container">

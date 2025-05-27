@@ -8,6 +8,7 @@ import {
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import CreateNewPage from "./pages/CreateNewPage/CreateNewPage";
 import MyAssignmentsPage from "./pages/MyAssignmentsPage/MyAssignmentsPage";
+import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
 import Login from "./components/LoginForm/LoginForm";
 import Register from "./components/SignupForm/SignupForm";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -49,6 +50,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/tasks/:taskId" element={<TaskDetailPage />} />
       </Routes>
     </Router>
   );
