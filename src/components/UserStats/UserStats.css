@@ -91,10 +91,8 @@
 .achievement:hover {
   background: linear-gradient(#5b5ee5, #98b2ff);
   -webkit-background-clip: text;
-  color: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  border-image: linear-gradient(#5b5ee5, #98b2ff) 1;
+  -webkit-text-fill-color: transparent;
+  border-radius: 6px;
   box-sizing: border-box;
 }
 

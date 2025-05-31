@@ -4,9 +4,21 @@ import AddIcon from "../../assets/Add.svg";
 import TasksIcon from "../../assets/Tasks.svg";
 import DashboardIcon from "../../assets/Dashboard.svg";
 import Logo from "../../assets/Logo.svg";
+import { useUserProfile } from "../../hooks/useUserProfile";
 
 const Sidebar = () => {
   const location = useLocation();
+  const token = localStorage.getItem("token");
+
+  const { user, loading, error } = useUserProfile(token);
+
+  if (loading) return null;
+  if (error || !user) return null;
+
+  const roles = user.roles || [];
+  const isOnlyStudent =
+    roles.includes("ROLE_STUDENT") &&
+    roles.every((role) => role === "ROLE_STUDENT");
 
   return (
     <div className="sidebar">
@@ -39,17 +51,19 @@ const Sidebar = () => {
           <span>Мої місії</span>
         </Link>
 
-        <Link
-          to="/create"
-          className={`nav-item ${
-            location.pathname === "/create" ? "active" : ""
-          }`}
-        >
-          <span className="icon">
-            <img src={AddIcon} alt="Add" />
-          </span>
-          <span>Створити</span>
-        </Link>
+        {!isOnlyStudent && (
+          <Link
+            to="/create"
+            className={`nav-item ${
+              location.pathname === "/create" ? "active" : ""
+            }`}
+          >
+            <span className="icon">
+              <img src={AddIcon} alt="Add" />
+            </span>
+            <span>Створити</span>
+          </Link>
+        )}
       </nav>
 
       <footer className="footer">
