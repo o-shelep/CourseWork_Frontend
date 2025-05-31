@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useSignup } from "../../hooks/useSignup";
 import "../LoginForm/LoginForm.css";
 import backgroundImage from "../../assets/Registration_Banner.png";
@@ -64,7 +65,7 @@ const SignupForm = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="minimum 8 characters"
+                placeholder="Щонайменше 8 символів"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -72,9 +73,13 @@ const SignupForm = () => {
             </div>
 
             {error && <p style={{ color: "red" }}>{error}</p>}
+            <div className="forgot-password-container">
+              <p>Вже маєете акаунт?</p>
+              <Link to="/login">Увійти</Link>
+            </div>
 
             <button className="register-btn" type="submit" disabled={loading}>
-              {loading ? "Signing up..." : "Sign up"}
+              {loading ? "Реєстрація..." : "Зареєструватися"}
             </button>
           </form>
         </div>

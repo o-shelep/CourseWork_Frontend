@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useTasks } from "../../hooks/useTasks";
 import "./TaskDetail.css";
+import { formatSubject } from "../../utils/textUtil";
 
 const TaskDetail = () => {
   const { taskId } = useParams();
@@ -15,7 +16,7 @@ const TaskDetail = () => {
     <div className="task-detail-container">
       <div className="task-header">
         <div className="subject">
-          <div className="subject-icon">{task.title}</div>
+          <div className="subject-icon">{formatSubject(task.title)}</div>
           <h2 className="subject-title">{task.title}</h2>
         </div>
         <div className="teacher">

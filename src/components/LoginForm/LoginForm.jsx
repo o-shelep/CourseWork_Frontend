@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./LoginForm.css";
 import backgroundImage from "../../assets/Registration_Banner.png";
 import { useLogin } from "../../hooks/useLogin";
@@ -50,7 +51,7 @@ const LoginForm = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="minimum 8 characters"
+                placeholder="Щонайменше 8 символів"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -61,9 +62,11 @@ const LoginForm = () => {
 
             <div className="forgot-password-container">
               <p>Не маєте акаунту?</p>
+              <Link to="/register">Зареєструватися</Link>
             </div>
+
             <button className="register-btn" disabled={loading}>
-              {loading ? "Logging in..." : "Log in"}
+              {loading ? "Вхід..." : "Увійти"}
             </button>
           </form>
         </div>

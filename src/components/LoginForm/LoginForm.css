@@ -13,14 +13,16 @@
   max-width: 900px;
   width: 100%;
 }
+
 .heading-container {
-  text-align: left;
+  display: flex;
+  align-items: start;
   width: 100%;
 }
+
 .form-container {
   margin-right: 24px;
   width: 400px;
-  text-align: center;
 }
 
 .heading-container .heading {
@@ -38,7 +40,6 @@
 .register-input {
   display: flex;
   flex-direction: column;
-  text-align: left;
   margin-bottom: 32px;
 }
 
