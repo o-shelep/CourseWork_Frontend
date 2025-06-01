@@ -8,6 +8,7 @@ import {
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import CreateNewPage from "./pages/CreateNewPage/CreateNewPage";
 import MyAssignmentsPage from "./pages/MyAssignmentsPage/MyAssignmentsPage";
+import TeacherAssignmentsPage from "./pages/TeacherAssignmentsPage/TeacherAssignmentsPage";
 import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
 import Login from "./components/LoginForm/LoginForm";
 import Register from "./components/SignupForm/SignupForm";
@@ -41,6 +42,14 @@ function App() {
           element={
             <ProtectedRoute>
               <MyAssignmentsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/assignments"
+          element={
+            <ProtectedRoute>
+              <TeacherAssignmentsPage />
             </ProtectedRoute>
           }
         />

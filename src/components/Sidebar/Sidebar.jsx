@@ -21,6 +21,7 @@ const Sidebar = () => {
     roles.includes("ROLE_STUDENT") &&
     roles.every((role) => role === "ROLE_STUDENT");
   const isAdmin = roles.includes("ROLE_ADMIN");
+  const isTeacher = roles.includes("ROLE_TEACHER");
 
   return (
     <div className="sidebar">
@@ -41,19 +42,35 @@ const Sidebar = () => {
           <span>Дашборд</span>
         </Link>
 
-        <Link
-          to="/assignments"
-          className={`nav-item ${
-            location.pathname === "/assignments" ? "active" : ""
-          }`}
-        >
-          <span className="icon">
-            <img src={TasksIcon} alt="My Assignments" />
-          </span>
-          <span>Мої місії</span>
-        </Link>
+        {isOnlyStudent && (
+          <Link
+            to="/assignments"
+            className={`nav-item ${
+              location.pathname === "/assignments" ? "active" : ""
+            }`}
+          >
+            <span className="icon">
+              <img src={TasksIcon} alt="My Assignments" />
+            </span>
+            <span>Мої місії</span>
+          </Link>
+        )}
 
         {!isOnlyStudent && (
+          <Link
+            to="/teacher/assignments"
+            className={`nav-item ${
+              location.pathname === "/teacherassignments" ? "active" : ""
+            }`}
+          >
+            <span className="icon">
+              <img src={TasksIcon} alt="Teacher Assignments" />
+            </span>
+            <span>Мої місії</span>
+          </Link>
+        )}
+
+        {(isTeacher || isAdmin) && (
           <Link
             to="/create"
             className={`nav-item ${
@@ -66,20 +83,19 @@ const Sidebar = () => {
             <span>Створити</span>
           </Link>
         )}
+
         {isAdmin && (
-          <>
-            <Link
-              to="/admin/users"
-              className={`nav-item ${
-                location.pathname === "/admin/users" ? "active" : ""
-              }`}
-            >
-              <span className="icon">
-                <img src={ManageUsersIcon} alt="Manage Users" />
-              </span>
-              <span>Користувачі</span>
-            </Link>
-          </>
+          <Link
+            to="/admin/users"
+            className={`nav-item ${
+              location.pathname === "/admin/users" ? "active" : ""
+            }`}
+          >
+            <span className="icon">
+              <img src={ManageUsersIcon} alt="Manage Users" />
+            </span>
+            <span>Користувачі</span>
+          </Link>
         )}
       </nav>
 
