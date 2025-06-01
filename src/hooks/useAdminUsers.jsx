@@ -27,7 +27,7 @@ export const useAdminUsers = () => {
       });
   };
 
-  useEffect(fetchUsers, []);
+  useEffect(fetchUsers, [token]);
 
   const deleteUser = (id) => {
     fetch(`${process.env.REACT_APP_API_URL}/admin/users/${id}`, {
@@ -45,6 +45,7 @@ export const useAdminUsers = () => {
   };
 
   const changeUserRole = (id, newRole) => {
+    console.log("Зміна ролі:", id, newRole);
     fetch(`${process.env.REACT_APP_API_URL}/admin/users/${id}/role`, {
       method: "PATCH",
       headers: {
@@ -53,13 +54,38 @@ export const useAdminUsers = () => {
       },
       body: JSON.stringify({ role: newRole }),
     }).then((res) => {
+      console.log("Response status:", res.status);
       if (res.ok) {
         fetchUsers();
       } else {
-        alert("Помилка при зміні ролі");
+        res.text().then((msg) => {
+          console.error("Backend error:", msg);
+          alert("Помилка при зміні ролі");
+        });
       }
     });
   };
 
-  return { users, loading, error, deleteUser, changeUserRole };
+  const updateUser = (id, updatedData) => {
+    fetch(`${process.env.REACT_APP_API_URL}/admin/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((res) => {
+        if (res.ok) {
+          fetchUsers();
+        } else {
+          alert("Помилка при оновленні користувача");
+        }
+      })
+      .catch(() => {
+        alert("Помилка при з'єднанні з сервером");
+      });
+  };
+
+  return { users, loading, error, deleteUser, changeUserRole, updateUser };
 };
