@@ -11,9 +11,16 @@ const SubmissionCard = ({ id, title, description }) => {
         `http://localhost:8080/submissions/task/${id}`
       );
       const data = await response.json();
-      setSubmissions(data);
+
+      if (Array.isArray(data)) {
+        setSubmissions(data);
+      } else {
+        console.error("Невірний формат відповіді, очікувався масив:", data);
+        setSubmissions([]);
+      }
     } catch (error) {
       console.error("Помилка при завантаженні сабмішинів:", error);
+      setSubmissions([]);
     }
   };
 
@@ -48,7 +55,7 @@ const SubmissionCard = ({ id, title, description }) => {
       </div>
 
       <div className="task-actions">
-        <button className="details-task-btn" onClick={toggleSubmissions}>
+        <button className="submit-task-btn" onClick={toggleSubmissions}>
           {showSubmissions ? "Сховати подання" : "Переглянути подання"}
         </button>
       </div>

@@ -1,14 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useTasks } from "../../hooks/useTasks";
 import "./TaskDetail.css";
+import { useTaskDetail } from "../../hooks/useTaskDetail";
 import { formatSubject } from "../../utils/textUtil";
 
 const TaskDetail = () => {
-  const { taskId } = useParams();
-  const { tasks } = useTasks();
-
-  const task = tasks.find((t) => String(t.id) === taskId);
+  const { task, content, setContent, message, handleSubmit } = useTaskDetail();
 
   if (!task) return <p>Завдання не знайдено.</p>;
 
@@ -44,15 +40,23 @@ const TaskDetail = () => {
       </div>
 
       <div className="submission-area">
-        <textarea placeholder="Enter your answer..."></textarea>
+        <textarea
+          placeholder="Введіть посилання на відповідь або текст..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        ></textarea>
       </div>
+
+      {message && <p className="submission-message">{message}</p>}
 
       <div className="task-footer">
         <div className="deadline">
           <span>Здати до</span>
           <p>{task.deadline || "N/A"}</p>
         </div>
-        <button className="submit-btn">Здати роботу</button>
+        <button className="submit-btn" onClick={handleSubmit}>
+          Здати роботу
+        </button>
       </div>
     </div>
   );
