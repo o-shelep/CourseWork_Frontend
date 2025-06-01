@@ -43,7 +43,7 @@ const ManageUsersPage = () => {
             {users.map((user) => (
               <tr key={user.id}>
                 <td>{user.id}</td>
-                <td>{user.fullName}</td>
+                <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.roles.join(", ")}</td>
                 <td className="actions-cell">
@@ -81,7 +81,7 @@ const ManageUsersPage = () => {
         {roleModalUser && (
           <div className="modal-backdrop">
             <div className="modal">
-              <h3>Змінити роль для {roleModalUser.fullName}</h3>
+              <h3>Змінити роль для {roleModalUser.name}</h3>
               <select
                 value={newRole}
                 onChange={(e) => setNewRole(e.target.value)}
@@ -91,8 +91,13 @@ const ManageUsersPage = () => {
                 <option value="ROLE_ADMIN">Адміністратор</option>
               </select>
               <div className="modal-actions">
-                <button onClick={handleChangeRole}>Зберегти</button>
-                <button onClick={() => setRoleModalUser(null)}>
+                <button onClick={handleChangeRole} className="confirm">
+                  Зберегти
+                </button>
+                <button
+                  onClick={() => setRoleModalUser(null)}
+                  className="cancel"
+                >
                   Скасувати
                 </button>
               </div>
