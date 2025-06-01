@@ -11,8 +11,6 @@ import MyAssignmentsPage from "./pages/MyAssignmentsPage/MyAssignmentsPage";
 import TaskDetailPage from "./pages/TaskDetailPage/TaskDetailPage";
 import Login from "./components/LoginForm/LoginForm";
 import Register from "./components/SignupForm/SignupForm";
-import ManageSubmissionsPage from "./pages/ManageSubmissionsPage/ManageSubmissionsPage";
-import ManageTasksPage from "./pages/ManageTasksPage.jsx/ManageTasksPage";
 import ManageUsersPage from "./pages/ManageUsersPage/ManageUsersPage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
@@ -37,8 +35,6 @@ function App() {
           }
         />
         <Route path="/admin/users" element={<ManageUsersPage />} />
-        <Route path="/admin/tasks" element={<ManageTasksPage />} />
-        <Route path="/admin/submissions" element={<ManageSubmissionsPage />} />
 
         <Route
           path="/assignments"
