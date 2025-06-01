@@ -2,6 +2,8 @@ import "./Sidebar.css";
 import { Link, useLocation } from "react-router-dom";
 import AddIcon from "../../assets/Add.svg";
 import TasksIcon from "../../assets/Tasks.svg";
+import ManageSubmissionsIcon from "../../assets/Submissions.svg";
+import ManageUsersIcon from "../../assets/Users.svg";
 import DashboardIcon from "../../assets/Dashboard.svg";
 import Logo from "../../assets/Logo.svg";
 import { useUserProfile } from "../../hooks/useUserProfile";
@@ -19,6 +21,7 @@ const Sidebar = () => {
   const isOnlyStudent =
     roles.includes("ROLE_STUDENT") &&
     roles.every((role) => role === "ROLE_STUDENT");
+  const isAdmin = roles.includes("ROLE_ADMIN");
 
   return (
     <div className="sidebar">
@@ -63,6 +66,45 @@ const Sidebar = () => {
             </span>
             <span>Створити</span>
           </Link>
+        )}
+        {isAdmin && (
+          <>
+            <Link
+              to="/admin/users"
+              className={`nav-item ${
+                location.pathname === "/admin/users" ? "active" : ""
+              }`}
+            >
+              <span className="icon">
+                <img src={ManageUsersIcon} alt="Manage Users" />
+              </span>
+              <span>Користувачі</span>
+            </Link>
+
+            <Link
+              to="/admin/tasks"
+              className={`nav-item ${
+                location.pathname === "/admin/tasks" ? "active" : ""
+              }`}
+            >
+              <span className="icon">
+                <img src={TasksIcon} alt="Manage Tasks" />
+              </span>
+              <span>Завдання</span>
+            </Link>
+
+            <Link
+              to="/admin/submissions"
+              className={`nav-item ${
+                location.pathname === "/admin/submissions" ? "active" : ""
+              }`}
+            >
+              <span className="icon">
+                <img src={ManageSubmissionsIcon} alt="Manage Submissions" />
+              </span>
+              <span>Подання</span>
+            </Link>
+          </>
         )}
       </nav>
 
