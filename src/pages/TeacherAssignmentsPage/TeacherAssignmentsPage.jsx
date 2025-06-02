@@ -44,6 +44,7 @@ function TeacherAssignmentsPage() {
         {tasksToShow.map((task) => (
           <div key={task.id} className="task-card-container">
             <SubmissionCard
+              id={task.id}
               title={formatSubject(task.title)}
               description={truncateDescription(task.description)}
             />
